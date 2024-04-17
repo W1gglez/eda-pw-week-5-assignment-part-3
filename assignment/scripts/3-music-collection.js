@@ -27,8 +27,22 @@ console.log(
 console.log(addToCollection(myCollection, 'Toby Keith', 'Toby Keith', '1993'));
 console.log(addToCollection(myCollection, 'Meteora', 'Linkin Park', '2003'));
 
+console.log(myCollection);
 
+function showCollection(collection) {
+  for (let album of collection) {
+    console.log(
+      album.title,
+      'by',
+      album.artist,
+      ', published in',
+      album.yearPublished,
+      '.'
+    );
+  }
+}
 
+showCollection(myCollection);
 
 // PLEASE DO NOT MODIFY THIS. Just leave it down here at the bottom. Think of it
 // as a lil' chunk of friendly code that you don't need to understand right now.
