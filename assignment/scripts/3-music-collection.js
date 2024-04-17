@@ -53,6 +53,65 @@ function findByArtist(collection, artist) {
 console.log(findByArtist(myCollection, 'Nickelback'));
 console.log(findByArtist(myCollection, 'Shakira'));
 
+const searchCriteria = {
+  artist: 'Ray Charles',
+  year: 1957,
+};
+
+function search(collection, searchCriteria) {
+  let matchFound = [];
+  searchCriteria = searchCriteria || undefined;
+
+  for (let album of collection) {
+    if (
+      searchCriteria === undefined ||
+      searchCriteria.artist === undefined ||
+      searchCriteria.year === undefined ||
+      !searchCriteria.artist ||
+      !searchCriteria.year
+    ) {
+      matchFound = collection;
+    } else if (
+      album.artist === searchCriteria.artist &&
+      album.yearPublished === searchCriteria.year
+    ) {
+      matchFound.push(album);
+    }
+  }
+  return matchFound;
+}
+
+console.log(search(myCollection, searchCriteria));
+
+addToCollection(myCollection, 'Friendship', 'Ray Charles', 1984);
+console.log(search(myCollection, searchCriteria));
+
+addToCollection(myCollection, 'Hallelluja I Love Her So', 'Ray Charles', 1957);
+console.log(search(myCollection, searchCriteria));
+
+searchCriteria.artist = '';
+console.log(search(myCollection, searchCriteria));
+
+searchCriteria.artist = 'Ray Charles';
+searchCriteria.year = 0;
+console.log(search(myCollection, searchCriteria));
+
+searchCriteria.artist = 'Wilco';
+searchCriteria.year = '1908';
+console.log(search(myCollection, searchCriteria));
+
+delete searchCriteria.artist;
+console.log(search(myCollection, searchCriteria));
+
+delete searchCriteria.year;
+console.log(search(myCollection, searchCriteria));
+
+console.log(search(myCollection));
+
+
+
+
+
 // PLEASE DO NOT MODIFY THIS. Just leave it down here at the bottom. Think of it
 // as a lil' chunk of friendly code that you don't need to understand right now.
 // (It's used for automated testing.)
