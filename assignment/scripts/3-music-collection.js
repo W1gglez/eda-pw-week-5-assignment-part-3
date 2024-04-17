@@ -32,17 +32,26 @@ console.log(myCollection);
 function showCollection(collection) {
   for (let album of collection) {
     console.log(
-      album.title,
-      'by',
-      album.artist,
-      ', published in',
-      album.yearPublished,
-      '.'
+      ` ${album.title} by ${album.artist}, published in ${album.yearPublished}.`
     );
   }
 }
 
 showCollection(myCollection);
+
+function findByArtist(collection, artist) {
+  let artistMatch = [];
+
+  for (let album of collection) {
+    if (album.artist === artist) {
+      artistMatch.push(album);
+    }
+  }
+  return artistMatch;
+}
+
+console.log(findByArtist(myCollection, 'Nickelback'));
+console.log(findByArtist(myCollection, 'Shakira'));
 
 // PLEASE DO NOT MODIFY THIS. Just leave it down here at the bottom. Think of it
 // as a lil' chunk of friendly code that you don't need to understand right now.
